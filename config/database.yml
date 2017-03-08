@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+
+development:
+  <<: *default
+  database: skeleton_development
+
+test:
+  <<: *default
+  database: skeleton_test
+
+production:
+  <<: *default
+  database: skeleton_production
+  username: skeleton
+  password: <%= ENV['SKELETON_DATABASE_PASSWORD'] %>
+
+heroku:
+  adapter: postgresql
+  encoding: utf8
+  pool: 15
